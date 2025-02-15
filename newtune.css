@@ -61,7 +61,6 @@ body{
     background: transparent;
     color: aliceblue;
     opacity: 1;
-    border-radius: 50px;
     padding: 30px 35px;
     border: 2px solid rgb(255, 255, 255);
     backdrop-filter: blur(20px);
