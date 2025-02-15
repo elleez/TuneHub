@@ -52,10 +52,12 @@ body{
     max-width: 1000px;  /* Optional: limit the width for better readability */
 } 
 
-.wrapper{
-    margin-top: 90px;
-    width: 550px;
-    height: 250px;
+.g_id_signin {
+ margin-top: 50px;
+ cursor: pointer;
+ margin-top: 70px;
+    width: 300px;
+    height: 100px;
     background: transparent;
     color: aliceblue;
     opacity: 1;
@@ -63,74 +65,16 @@ body{
     padding: 30px 35px;
     border: 2px solid rgb(255, 255, 255);
     backdrop-filter: blur(20px);
-    margin-left: 200px;
-
+    font-family: 'Times New Roman', Times, serif;
 }
-.wrapper h1{
-    margin-top: 10px;
-    font-size: 30px;
-    text-align: center;
+.g_id_signin {
+    display: flex;
     justify-content: center;
-
+    background: transparent;
 }
-.orsign{
-    text-align: center;
-    align-items: center;
-}
+.g_id_onload {
+    background: transparent;
+    padding: 30px 35px;
+} 
 
-.btngg{
-    justify-self: center;
-    display: inline-block;
-    width: 250px;
-    transition: .5s;
-    height: 60px;
-    border-radius: 35px;
-    font-size:  30px;
-    margin-top: 30px;
-    cursor: pointer;
-    margin-left: 129px;
-}
-.btngg i{
-    color: black;
-    justify-content: center;
-}
-
-.wrapper .btn{
-    margin-left: 115px;
-    width: 50%;
-    height: 45px;
-    background: #fff;
-    border: none;
-    outline: none;
-    border-radius: 35px;
-    box-shadow: 0 0 10px rgb(0, 0, 0, -1);
-    cursor: pointer;
-    font-size: 15px;
-    color: #333;
-    font-weight: 600;
-    text-decoration: underline;
-
-}
-.wrapper .btn a{
-    color: black;
-    text-decoration: none;
-}
-
-.wrapper .register-link{
-    font-size: 15px;
-    text-align: center;
-    margin-top: 20px;
-    margin-bottom: 20px;
-}
-
-.wrapper .register-link a{
-    color: #fff;
-    font-weight: 500;
-
-}
-
-.register-link a:hover{
-    text-decoration: underline;
-}
-
-
+ 
