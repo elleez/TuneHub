@@ -27,12 +27,19 @@
   </div>
 
   <div id="g_id_onload"
-   data-client_id="906971062129-bnm31j6t0gq10jc026pv2ffdmigbs32f.apps.googleusercontent.com"
-   data-login uri="http://localhost:4555"
-   data-login_uri="https://elleez.github.io/TuneHub/auth/google/callback"
-   data-auto_prompt="false">
+    data-client_id="906971062129-bnm31j6t0gq10jc026pv2ffdmigbs32f.apps.googleusercontent.com"
+    data-context="signin"
+    data-ux_mode="popup"
+    data-callback="handleCredentialResponse">
   </div>
   <div class="g_id_signin" data-type="standard"></div>
+
+  <script>
+    function handleCredentialResponse(response) {
+      console.log("JWT Token: ", response.credential);
+      window.location.href = "mtv.html"; // Redirect to main page after login
+    }
+  </script>
 
   <script>
     function loadStyleSheet(href, id) {
@@ -49,8 +56,6 @@
     loadStyleSheet('mtv.css', 'mtvStylesheet');
     loadStyleSheet('newtune.css', 'newtuneStylesheet');
   </script>
-  
-  <script src="app.js"> </script>
   
 </body>
 
