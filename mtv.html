@@ -15,7 +15,8 @@
     function confirmLogout() {
       const confirmed = confirm("Are you sure you want to log out?");
       if (confirmed) {
-        window.location.href = "/logout";
+        localStorage.removeItem("user"); // Remove user data
+        window.location.href = "index.html";
       }
     }
 
@@ -27,91 +28,62 @@
           confirmLogout();
         });
       }
+
+      // Fetch user data from local storage
+      const userData = localStorage.getItem('user');
+      if (userData) {
+        const user = JSON.parse(userData);
+        document.getElementById("welcome-message").innerHTML = `Hello, welcome to TuneHub, ${user.name}!`;
+        document.getElementById("user-name").textContent = user.name;
+        document.getElementById("user-email").textContent = user.email;
+      } else {
+        // Redirect to login if user data is missing
+        window.location.href = "index.html";
+      }
     });
   </script>
 </head>
-<div>
-
-    <div class =text>  <h2>SONG PREVIEW</h2> </div>
-
+<body>
+  <div>
+    <div class="text">  <h2>SONG PREVIEW</h2> </div>
     <div id="header">
       <div id="logo-container">
         <img src="logo.png" alt="TuneHub" class="logo">
       </div>
     </div>
 
-
     <div class="container">
-    <div class="search">
-      <input type="text" id="searchTerm" placeholder="Search for songs or artists">
-    </div>
-
-    <div class="bttn">
-      <button id="searchTermBtn"><i class="fa fa-search"></i></button>
-    </div>
-
-      <div class="playall">
-      <button id="playAllBtn" >Play All</button>
-    </div>
-  </div>
-
-  <div class="profile-container">
-    <a href="#" id="profile-icon" class="profile-icon"><i class="fa-solid fa-user"></i></a>
-  
-    <div class="dropdown-menu" id="dropdown-menu">
-      <div id="profile-info">
-        <div id="logohub">
-          <img src="logo.png" alt="TuneHub Logo" class="logo">
-        </div>
-        <h4 id="welcome-message">Hello, welcome to TuneHub!</h4>
+      <div class="search">
+        <input type="text" id="searchTerm" placeholder="Search for songs or artists">
       </div>
-      <p><strong>User Name:</strong> <span id="user-name">Loading...</span></p>
-      <p><strong>Email:</strong> <span id="user-email">Loading...</span></p>
-
-      <button onclick="confirmLogout()">Logout</button>
+      <div class="bttn">
+        <button id="searchTermBtn"><i class="fa fa-search"></i></button>
+      </div>
+      <div class="playall">
+        <button id="playAllBtn">Play All</button>
+      </div>
     </div>
+
+    <div class="profile-container">
+      <a href="#" id="profile-icon" class="profile-icon"><i class="fa-solid fa-user"></i></a>
+      <div class="dropdown-menu" id="dropdown-menu">
+        <div id="profile-info">
+          <div id="logohub">
+            <img src="logo.png" alt="TuneHub Logo" class="logo">
+          </div>
+          <h4 id="welcome-message">Hello, welcome to TuneHub!</h4>
+        </div>
+        <p><strong>User Name:</strong> <span id="user-name">Loading...</span></p>
+        <p><strong>Email:</strong> <span id="user-email">Loading...</span></p>
+        <button onclick="confirmLogout()">Logout</button>
+      </div>
+    </div>
+
+    <main id="songs">
+      <!-- Songs will be dynamically displayed here -->
+    </main>
   </div>
   
-
-
-
-  <main id="songs">
-    <!-- Songs will be dynamically displayed here -->
-  </main>
-
-  <script>
-    const userData = localStorage.getItem('user');
-  
-    if (userData) {
-    
-      const user = JSON.parse(userData);
-      document.getElementById("welcome-message").innerHTML = `Hello, welcome to TuneHub, ${user.displayName}!`;
-      document.getElementById("user-name").textContent = user.displayName;
-      document.getElementById("user-email").textContent = user.email;
-    } else {      // Fetch user data from the server if not in local storage
-      fetch('/user')
-        .then(response => response.json())
-        .then(user => {
-          if (user && user.displayName) {
-            // Store user data in local storage for future use
-            localStorage.setItem("user", JSON.stringify(user));
-            
-            // Display user data on the page
-            document.getElementById("welcome-message").textContent = `Hello, welcome to TuneHub, ${user.displayName}!`;
-            document.getElementById("user-name").textContent = user.displayName;
-            document.getElementById("user-email").textContent = user.email;
-          } else {
-            // Redirect to the login page if the user is not authenticated
-            window.location.href = "./index.html";
-          }
-        })
-        .catch(() => {
-          console.error('Error fetching user data');  // Log error in console
-        });
-    }
-  </script>
-  
-
   <script src="mtv.js"></script>
 </body>
 </html>
