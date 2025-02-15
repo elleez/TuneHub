@@ -33,14 +33,22 @@
     data-callback="handleCredentialResponse">
   </div>
   <div class="g_id_signin" data-type="standard"></div>
+<script>
+function handleCredentialResponse(response) {
+  const token = response.credential;
+  const userData = JSON.parse(atob(token.split(".")[1]));
+  
+  localStorage.setItem("user", JSON.stringify({
+    name: userData.name,
+    email: userData.email,
+    picture: userData.picture
+  }));
 
-  <script>
-    function handleCredentialResponse(response) {
-      console.log("JWT Token: ", response.credential);
-      window.location.href = "mtv.html"; // Redirect to main page after login
-    }
-  </script>
-
+  console.log("User logged in:", userData.name);
+  window.location.href = "mtv.html";
+}
+</script>
+  
   <script>
     function loadStyleSheet(href, id) {
       if (!document.getElementById(id)) {
