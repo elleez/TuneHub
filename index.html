@@ -39,36 +39,6 @@
   </div>
 
   <script>
-    function handleCredentialResponse(response) {
-      fetch("http://localhost:4555/verify-token", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json"
-        },
-        body: JSON.stringify({ token: response.credential })
-      })
-      .then(res => res.json())
-      .then(data => {
-        if (data.name) {
-          console.log("Welcome, " + data.name);
-          window.location.href = "mtv.html";
-        } else {
-          alert("Authentication failed");
-        }
-      })
-      .catch(console.error);
-    }
-
-    window.onload = function() {
-      google.accounts.id.initialize({
-        client_id: "906971062129-bnm31j6t0gq10jc026pv2ffdmigbs32f.apps.googleusercontent.com",
-        callback: handleCredentialResponse
-      });
-      google.accounts.id.prompt();
-    };
-  </script>
-
-  <script>
     function loadStyleSheet(href, id) {
       if (!document.getElementById(id)) {
         const link = document.createElement('link');
