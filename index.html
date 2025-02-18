@@ -59,8 +59,7 @@ function handleCredentialResponse(response) {
   
   localStorage.setItem("user", JSON.stringify({
     name: userData.name,
-    email: userData.email,
-    picture: userData.picture
+    email: userData.email
   }));
 
   console.log("User logged in:", userData.name);
