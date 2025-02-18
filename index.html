@@ -3,13 +3,23 @@
 
 <head>
   <meta charset="UTF-8">
+  
+    <!-- Prevents caching to ensure the latest version of the page is loaded -->
+  
   <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
   <meta http-equiv="Pragma" content="no-cache">
   <meta http-equiv="Expires" content="0">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
   <title>TuneHub</title>
+  
+    <!-- Link to external CSS file -->
   <link rel="stylesheet" href="newtune.css">
+
+    <!-- Boxicons library for icons -->
   <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
+  
+    <!-- Google Sign-In API script -->
   <script src="https://accounts.google.com/gsi/client" async defer></script>
 </head>
 
@@ -26,6 +36,7 @@
     </h2>
   </div>
 
+    <!-- Google Sign-In button configuration -->
   <div id="g_id_onload"
     data-client_id="906971062129-bnm31j6t0gq10jc026pv2ffdmigbs32f.apps.googleusercontent.com"
     data-login_uri="https://elleez.github.io"
@@ -35,7 +46,13 @@
     data-callback="handleCredentialResponse">
   </div>
   <div class="g_id_signin"></div>
+  
 <script>
+    /**
+     * Handles the Google Sign-In response.
+     * Extracts user information from the credential token and stores it in local storage.
+     * Redirects to 'mtv.html' upon successful login.
+     */
 function handleCredentialResponse(response) {
   const token = response.credential;
   const userData = JSON.parse(atob(token.split(".")[1]));
@@ -52,6 +69,11 @@ function handleCredentialResponse(response) {
 </script>
   
   <script>
+     /**
+     * Dynamically loads and appends a stylesheet to the document head if it is not already included.
+     *  string href - The URL of the stylesheet.
+     * string id - The unique identifier for the stylesheet link element.
+     */
     function loadStyleSheet(href, id) {
       if (!document.getElementById(id)) {
         const link = document.createElement('link');
@@ -62,7 +84,8 @@ function handleCredentialResponse(response) {
         document.head.appendChild(link);
       }
     }
-
+    
+// Load additional stylesheets for the page
     loadStyleSheet('mtv.css', 'mtvStylesheet');
     loadStyleSheet('newtune.css', 'newtuneStylesheet');
   </script>
