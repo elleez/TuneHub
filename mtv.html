@@ -8,10 +8,16 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
   <title>PLAYLIST</title>
+  <!-- Font Awesome for icons -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  
+  <!-- External CSS file -->
   <link rel="stylesheet" href="mtv.css">
   
   <script>
+     /**
+     * Function to confirm logout and remove user data.
+     */
     function confirmLogout() {
       const confirmed = confirm("Are you sure you want to log out?");
       if (confirmed) {
@@ -52,6 +58,7 @@
       </div>
     </div>
 
+    <!-- Search and Play Buttons -->
     <div class="container">
       <div class="search">
         <input type="text" id="searchTerm" placeholder="Search for songs or artists">
@@ -63,7 +70,7 @@
         <button id="playAllBtn">Play All</button>
       </div>
     </div>
-
+  <!-- Profile Section -->
     <div class="profile-container">
       <a href="#" id="profile-icon" class="profile-icon"><i class="fa-solid fa-user"></i></a>
       <div class="dropdown-menu" id="dropdown-menu">
@@ -78,12 +85,14 @@
         <button onclick="confirmLogout()">Logout</button>
       </div>
     </div>
+    
+    <!-- Songs Display Section -->
 
     <main id="songs">
       <!-- Songs will be dynamically displayed here -->
     </main>
   </div>
-  
+    <!-- External JavaScript file -->
   <script src="mtv.js"></script>
 </body>
 </html>
